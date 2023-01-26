@@ -8,17 +8,37 @@
     border: none;
     
 }
+
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #8f54a0 #c84646;
+}
+
+*::-webkit-scrollbar {
+    width: 1vw;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--scrollTracker);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #8f54a0;
+    border-radius: 10px;
+    border: 0.5px solid var(--obtn);
+}
 :root{
     --hoverText : #5680E9;
-    --scroll : #84CEEB;
+    --timeTable : #84ceeb48;
     --obtn : #5AB9EA;
     --usualText : #7e8297;
     --shadow : #7e8396;
-    --important : #8860D0;
+    --active : #8860D0;
+    --scrollTracker : rgba(213, 70, 249, 0.462);
     --bodyColor : #e4ecf0;
     --golden:#ffd900c7;
-    --darkerBody : #c2d1d5;
-    --topMenu:#d5dce0ae;
+    --darkerBody : #99a2a4;
+    --menuTimeSchedule:rgba(33, 70, 235, 0.968);
     --usualTransition : 0.175s ease-in-out;
     --animationBorder : rgb(192, 41, 238);
     --animationBorder2: rgb(33, 70, 235);
@@ -172,4 +192,90 @@ animation: animate 9s linear infinite;
     -webkit-backdrop-filter: blur( 10px );
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
+    padding: 1rem;
+    overflow: hidden;
+}
+.menuTimeScheduleContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: flex-end;
+    
+}
+.wholeTimeSchedule{
+    
+}
+.menuTimeSchedule{
+    position: relative;
+    width: 50%;
+    height: 94%;
+    background-color: var(--menuTimeSchedule);
+    border-radius: 10px;
+    transition: all 1s;
+    opacity: 0;
+    
+}
+.menuTimeSchedule_display{
+    opacity: 1;
+    z-index: +1;
+}
+.menuTimeScheduleBTN{
+    font-size: 6vh;
+    cursor: pointer;
+    position: absolute;
+    z-index: +2;
+    color: var(--bodyColor);
+    transition: all 0.4s ease-in-out;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.64);
+}
+.menuTimeScheduleBTN:hover{
+    transition: all 0.2s ease-in-out;
+    color: var(--active);
+    font-size: 6.5vh;
+}
+
+.menuTimeScheduleBTN_color{
+    color: var(--active);
+    text-shadow: 6px 6px 5px rgba(0,0,0,0.64);
+}
+.timeTableContainer{
+    position: absolute;
+    overflow: scroll;
+    width: 98.6%;
+    height: 90%;
+    margin-top: 6rem;
+    right: 0.5%;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    box-shadow: 0 8px 32px 0 rgba(69, 72, 114, 0.37);
+    border-radius: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    
+}
+.timeTable{
+    background-color: var(--timeTable);
+    padding: 0.5rem;
+}
+.dayTime{
+    background-color: #fff;
+    width: 99.8%;
+    height: 10vh;
+    margin-left: auto;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: row;
+}
+.day{
+    width: 15vh;
+    height: 100%;
+    background-color: red;
+    border-top-right-radius: 100%;
+}
+.item{
+    width: 100px;
+    height: 100%;
+    background-color: blue;
+    margin-left: 0.5rem;
 }
