@@ -28,6 +28,7 @@
     border: 0.5px solid var(--obtn);
 }
 :root{
+    --ToDO : rgba(145, 108, 171, 0.444);
     --hoverText : #5680E9;
     --timeTable : #84ceeb48;
     --obtn : #5AB9EA;
@@ -42,6 +43,7 @@
     --usualTransition : 0.175s ease-in-out;
     --animationBorder : rgb(192, 41, 238);
     --animationBorder2: rgb(33, 70, 235);
+    --dayTxt:rgba(64, 190, 195, 0.362);
 }
 html { font-size: 62.5%; } 
 body{
@@ -258,7 +260,7 @@ animation: animate 9s linear infinite;
     padding: 0.5rem;
 }
 .toDo{
-    background-color: #fff;
+    background-color: var(--ToDO);
     width: 99.8%;
     height: 10vh;
     margin-left: auto;
@@ -266,10 +268,120 @@ animation: animate 9s linear infinite;
     margin-top: 0.5rem;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    border-radius: 8px;
 }
 .information{
     width: 15vh;
     height: 100%;
-    background-color: red;
+    background: rgba(219, 134, 134, 0.477);
+    font-family: Impact;
+    font-size: 3vh;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    border-radius: 8px;
     border-top-right-radius: 100%;
+}
+.date{
+    font-size: 2vh;
+    margin-top: 3vh;
+}
+.subject{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.txt{
+    border-radius: 8px;
+    direction: rtl;
+    width: 60%;
+    height: 100%;
+    background-color: var(--dayTxt);
+    font-family: Impact;
+    font-size: 5vh;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    padding: 2vh;
+}
+.operations{
+    border-radius: 8px;
+    font-family: Impact;
+    font-size: 4.5vh;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    width: 20%;
+    background: rgba(219, 134, 134, 0.477);
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+}
+.opBTN{
+    cursor: pointer;
+    transition: all 0.4s;
+}
+.typeAndGroup{
+    width: 9vh;
+    height: 100%;
+    font-family: Impact;
+    font-size: 2vh;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    
+}
+.type{
+    color: rgb(200, 74, 74);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.group{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.delete:hover{
+    color: rgb(209, 89, 89);
+    transition: all 0.4s;
+}
+.edit:hover{
+    color: rgb(201, 209, 89);
+    transition: all 0.4s;
+}
+.check:hover{
+    color: rgb(125, 209, 89);
+    transition: all 0.4s;
 }
