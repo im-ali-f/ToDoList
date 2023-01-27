@@ -10,3 +10,12 @@ addBTN.addEventListener("click",(e)=>{
     addBTN.classList.toggle('addBTN_color');
     add.classList.toggle('add_display');
 })    
+
+const checkNone=document.querySelector("#itemType");
+checkNone.addEventListener("click",(e)=>{
+    if(checkNone.value == "none"){
+    const timeIfNone=document.querySelector("#formDate")
+    timeIfNone.toggleAttribute("disabled")
+}
+})
+

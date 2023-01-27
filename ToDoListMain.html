@@ -35,8 +35,29 @@
 
                 <div class="menuTimeScheduleContainer">
                     <div class="addBTN"><i class="fa-solid fa-plus"></i></div>
-                    <div class="add"></div>
-                    
+                    <div class="add">
+                        <form method="post" name="item" class="addClassContainer">
+                           <div class="marginForm"></div>
+                            Subject : <input type="text" name="itemSubject" id="itemSubject" class="addClass addHover">
+                            Text : <input type="text" name="itemTxt" id="itemTxt" class="addClass addHover">
+                            Group : <select name="itemGroup" id="itemGroup" class="addClass addSelect addHover">
+                                <option value="daily">Daily</option>
+                                <option value="work">Work</option>
+                                <option value="personal">Personal</option>
+                                <option value="study">Study</option>
+                                <option value="etc">etc</option>
+                              </select>
+                            Type : <select name="itemType" id="itemType" class="addClass addSelect addHover">
+                                <option value="today">today</option>
+                                <option value="everyDay">everyDay</option>
+                                <option value="everyWeek">everyWeek</option>
+                                <option value="none">none</option>
+                              </select>
+                            ( if type is none ) : <input type="date" name="formDate" id="formDate" class="ifNone addSelect addHover" disabled>
+                              
+                        </form>
+                    </div>
+
                     <div class="menuTimeScheduleBTN"><i class="fa-solid fa-bars"></i></div>
                     <div class="menuTimeSchedule"></div>
                 </div>

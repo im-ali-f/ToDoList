@@ -57,6 +57,7 @@ body{
 .wholePage{
     height: 100vh;
     background-color: rgb(233, 187, 187);
+    overflow: hidden;
 }
 .wrapper {
     height: 100%;
@@ -417,4 +418,80 @@ animation: animate 9s linear infinite;
 .check:hover{
     color: rgb(125, 209, 89);
     transition: all 0.4s;
+}
+.addClassContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Impact;
+    font-size: 3vh;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+}
+.addClass{
+    background-color:var(--darkerBody) ;
+    color: #04fafd;
+    font-family: Impact;
+    font-size: 2vh;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    
+}
+#itemSubject{
+    width: 20vw;
+    height: 8vh;
+    font-size: 4vh;
+    transition: all 0.2s ease-in-out;
+
+
+}
+#itemTxt{
+    width: 40vw;
+    height: 9vh;
+    transition: all 0.2s ease-in-out;
+
+}
+.marginForm{
+    margin-top: 7rem;
+    transition: all 0.2s ease-in-out;
+
+}
+.addSelect{
+    width: 20vw;
+    height: 9vh;
+    transition: all 0.2s ease-in-out;
+
+}
+.ifNone{
+    text-align: center;
+    color: #04fafd;
+    font-family: Impact;
+    font-size: 2vh;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    transition: all 0.2s ease-in-out;
+
+}
+.addHover:hover{
+    transition: all 0.2s ease-in-out;
+    color: var(--active);
+    box-shadow: 0 8px 32px 0 rgba(69, 72, 114, 0.37);
 }
