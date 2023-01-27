@@ -232,12 +232,12 @@ animation: animate 9s linear infinite;
 }
 .menuTimeScheduleBTN:hover{
     transition: all 0.2s ease-in-out;
-    color: var(--active);
+    color: var(--obtn);
     font-size: 6.5vh;
 }
 
 .menuTimeScheduleBTN_color{
-    color: var(--active);
+    color: var(--obtn);
     text-shadow: 6px 6px 5px rgba(0,0,0,0.64);
 }
 
@@ -448,32 +448,27 @@ animation: animate 9s linear infinite;
     font-style: normal;
     font-variant: normal;
     text-transform: none;
-    
+    border-radius: 8px;
 }
 #itemSubject{
     width: 20vw;
     height: 8vh;
     font-size: 4vh;
     transition: all 0.2s ease-in-out;
-
-
 }
 #itemTxt{
     width: 40vw;
     height: 9vh;
     transition: all 0.2s ease-in-out;
-
 }
 .marginForm{
     margin-top: 7rem;
     transition: all 0.2s ease-in-out;
-
 }
 .addSelect{
     width: 20vw;
     height: 9vh;
     transition: all 0.2s ease-in-out;
-
 }
 .ifNone{
     text-align: center;
@@ -488,10 +483,27 @@ animation: animate 9s linear infinite;
     font-variant: normal;
     text-transform: none;
     transition: all 0.2s ease-in-out;
-
+    border-radius: 8px;
 }
 .addHover:hover{
     transition: all 0.2s ease-in-out;
     color: var(--active);
     box-shadow: 0 8px 32px 0 rgba(69, 72, 114, 0.37);
+}
+.addFormBTN{
+    margin-top: 1rem;
+    background-color: rgb(18, 104, 18);
+    width: 8vw;
+    height: 6vh;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    color: greenyellow;
+}
+.addFormBTN:hover{
+    width: 8.5vw;
+    height: 6.5vh;
+    transition: all 0.2s ease-in-out;
+    color: green;
+    background-color: greenyellow;
+    box-shadow: 0 8px 32px 0 rgba(16, 119, 63, 0.37);
 }
