@@ -52,6 +52,7 @@ body{
 .totalPage{
     width: 100%;
     height: 100vh;
+   
 }
 .wholePage{
     height: 100vh;
@@ -198,14 +199,10 @@ animation: animate 9s linear infinite;
     overflow: hidden;
 }
 .menuTimeScheduleContainer{
-    width: 100%;
     height: 100%;
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
     align-items: flex-end;
-    
-}
-.wholeTimeSchedule{
     
 }
 .menuTimeSchedule{
@@ -214,7 +211,7 @@ animation: animate 9s linear infinite;
     height: 94%;
     background-color: var(--menuTimeSchedule);
     border-radius: 10px;
-    transition: all 1s;
+    transition: all 0.5s;
     opacity: 0;
     
 }
@@ -226,6 +223,7 @@ animation: animate 9s linear infinite;
     font-size: 6vh;
     cursor: pointer;
     position: absolute;
+    left: 85vw;
     z-index: +2;
     color: var(--bodyColor);
     transition: all 0.4s ease-in-out;
@@ -239,6 +237,41 @@ animation: animate 9s linear infinite;
 
 .menuTimeScheduleBTN_color{
     color: var(--active);
+    text-shadow: 6px 6px 5px rgba(0,0,0,0.64);
+}
+
+.add{
+    position: relative;
+    width: 50%;
+    height: 94%;
+    background-color:rgba(69, 211, 69, 0.932);
+    border-radius: 10px;
+    transition: all 0.5s;
+    opacity: 0;
+    
+}
+.add_display{
+    opacity: 1;
+    z-index: +1;
+}
+
+.addBTN{
+    font-size: 6vh;
+    cursor: pointer;
+    position: absolute;
+    z-index: +2;
+    left: 5vw;
+    color: var(--bodyColor);
+    transition: all 0.4s ease-in-out;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.64);
+}
+.addBTN:hover{
+    transition: all 0.2s ease-in-out;
+    color: lime;
+    font-size: 6.5vh;
+}
+.addBTN_color{
+    color: lime;
     text-shadow: 6px 6px 5px rgba(0,0,0,0.64);
 }
 .timeTableContainer{
