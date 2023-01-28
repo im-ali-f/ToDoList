@@ -56,7 +56,7 @@ function refresh(day="today") {
             eval(`const ${delName} =document.querySelector(\`#delete_${toDoWholeItem["id"]}\`);`)
             console.log(delName)
             eval(`${delName}`).addEventListener("click",(e)=>{
-                console.log(e)
+                eval(`${delName}`).parentElement.parentElement.remove()
             })
         });
         
