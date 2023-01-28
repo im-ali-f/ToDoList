@@ -507,3 +507,8 @@ animation: animate 9s linear infinite;
     background-color: greenyellow;
     box-shadow: 0 8px 32px 0 rgba(16, 119, 63, 0.37);
 }
+.checked{
+    color: #99a2a4;
+    background-color: rgba(128, 128, 128, 0.577);
+    text-decoration: line-through;
+}

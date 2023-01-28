@@ -59,6 +59,13 @@ function refresh(day="today") {
                 eval(`${delName}`).parentElement.parentElement.remove()
             })
         });
+        whole.forEach(toDoWholeItem => {
+            let checkName= `check_${toDoWholeItem["id"]}`
+            eval(`const ${checkName} =document.querySelector(\`#check_${toDoWholeItem["id"]}\`);`)
+            eval(`${checkName}`).addEventListener("click",(e)=>{
+                eval(`${checkName}`).parentElement.parentElement.classList.toggle("checked")
+            })
+        });
         
     }
     
