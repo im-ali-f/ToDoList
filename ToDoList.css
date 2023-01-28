@@ -509,6 +509,9 @@ animation: animate 9s linear infinite;
 }
 .checked{
     color: #99a2a4;
-    background-color: rgba(128, 128, 128, 0.577);
+    background-color: rgba(47, 46, 46, 0.807);
     text-decoration: line-through;
+}
+.checkedBTN_active{
+    color: lime;
 }

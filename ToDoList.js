@@ -58,12 +58,22 @@ function refresh(day="today") {
             eval(`${delName}`).addEventListener("click",(e)=>{
                 eval(`${delName}`).parentElement.parentElement.remove()
             })
+            /*call editor there*/
         });
         whole.forEach(toDoWholeItem => {
             let checkName= `check_${toDoWholeItem["id"]}`
             eval(`const ${checkName} =document.querySelector(\`#check_${toDoWholeItem["id"]}\`);`)
             eval(`${checkName}`).addEventListener("click",(e)=>{
                 eval(`${checkName}`).parentElement.parentElement.classList.toggle("checked")
+                e.target.classList.toggle("checkedBTN_active")
+            })
+            /*call editor there*/
+        });
+        whole.forEach(toDoWholeItem => {
+            let editName= `edit_${toDoWholeItem["id"]}`
+            eval(`const ${editName} =document.querySelector(\`#edit_${toDoWholeItem["id"]}\`);`)
+            eval(`${editName}`).addEventListener("click",(e)=>{
+                /*first create editor ...*/
             })
         });
         
@@ -71,5 +81,29 @@ function refresh(day="today") {
     
         
     }
+/* get info forom html and send it to storage ! */
+const addFormBTN = document.querySelector("#addFormBTN")
+addFormBTN.addEventListener("click",(e)=>{
+    addToStorage()
+    e.preventDefault()
+})
+function addToStorage(){
+    const form = document.querySelector("#addForm");
+    const formData = new FormData(form);
+    let formInfo=[];
+    for (const info of formData) {
+       formInfo.push(info[1]) 
+    }
+    if(formInfo.length ==4){
+       formInfo.push("0") 
+    }
+    if(formInfo[4]==""){
+        formInfo[4]="0";
+    }
+    console.log(formInfo)
+    /* send to storage */
+}
+
 refresh(whole)
 console.log("#")
+addToStorage()

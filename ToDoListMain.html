@@ -36,7 +36,7 @@
                 <div class="menuTimeScheduleContainer">
                     <div class="addBTN"><i class="fa-solid fa-plus"></i></div>
                     <div class="add">
-                        <form method="post" name="item" class="addClassContainer">
+                        <form method="post" id="addForm" name="item" class="addClassContainer">
                            <div class="marginForm"></div>
                             Subject : <input type="text" name="itemSubject" id="itemSubject" class="addClass addHover">
                             Text : <input type="text" name="itemTxt" id="itemTxt" class="addClass addHover">
@@ -54,7 +54,7 @@
                                 <option value="none">none</option>
                               </select>
                             ( if type is none ) : <input type="date" name="formDate" id="formDate" class="ifNone addSelect addHover" disabled>
-                               <button class="addFormBTN addClass addHover">Add !</button>
+                               <button id="addFormBTN" class="addFormBTN addClass addHover">Add !</button>
                         </form>
                     </div>
 
