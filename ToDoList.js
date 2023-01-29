@@ -20,6 +20,7 @@ checkNone.addEventListener("click",(e)=>{
 })
 
 /*refresh todo list and show*/
+
 function refresh(day="today") {
     whole=storage()
     const timeTable=document.querySelector(".timeTable");
@@ -81,7 +82,9 @@ function refresh(day="today") {
     
         
     }
+
 /* get info forom html and send it to storage ! */
+
 const addFormBTN = document.querySelector("#addFormBTN")
 addFormBTN.addEventListener("click",(e)=>{
     e.preventDefault()
@@ -112,6 +115,7 @@ function addToStorage(){
     storage(oldWhole)
     fixDate()
 }
+
 /* storage */
 
 function storage(wholeToDo=[]) {
@@ -133,6 +137,9 @@ function globalToDoCounter() {
     }
     
 }
+
+/*fix date function set proper date for every*/
+
 function fixDate() {
     var currentDate = new Date()
     var day = currentDate.getDate()
@@ -157,5 +164,33 @@ function fixDate() {
     });
     storage(whole);
 }
+
+function combiner(day) {
+    const whole = storage()
+    let wholeToReturn=[]
+    whole.forEach(toDowhole => {
+        if(toDowhole["type"]=="everyDay"){
+            wholeToReturn.push(toDowhole)
+        }
+        else if(toDowhole["type"]=="everyWeek"){
+            const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+            const d1 = new Date(toDowhole["date"]);
+            let day1 = weekday[d1.getDay()];
+            
+            const d2 = new Date(day);
+            let day2 = weekday[d2.getDay()];
+            if(day1==day2){
+                wholeToReturn.push(toDowhole)
+            }
+        }
+        else if(day == toDowhole["date"]){
+            wholeToReturn.push(toDowhole)
+        }
+    });
+    return wholeToReturn;
+}
+
 refresh()
 console.log(storage())
+console.log(combiner())
