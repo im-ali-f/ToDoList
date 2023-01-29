@@ -20,14 +20,13 @@ checkNone.addEventListener("click",(e)=>{
 })
 
 /*refresh todo list and show*/
-whole=[{"id":1,"date":"11-4-99","subject":"item 1","text":"i must do this do that","type":"today","group":"personal"},
-{"id":2,"date":"11-3-99","subject":"item 2","text":"i must do this do that","type":"today","group":"personal"},
-{"id":3,"date":"11-3-99","subject":"item 3","text":"i must do this do that","type":"today","group":"personal"},
-]
 function refresh(day="today") {
-    if(day="today"){
+    whole=storage()
+    const timeTable=document.querySelector(".timeTable");
+    timeTable.innerHTML="";
+    if (whole){
+        if(day="today"){
         whole.forEach(toDoWholeItem => {
-        const timeTable=document.querySelector(".timeTable");
         timeTable.innerHTML+=`<div class="toDo">
                             <div class="information">
                                 <p class="date">${toDoWholeItem["date"]}</p>
@@ -77,14 +76,17 @@ function refresh(day="today") {
         });
         
     }
+    }
+    
     
         
     }
 /* get info forom html and send it to storage ! */
 const addFormBTN = document.querySelector("#addFormBTN")
 addFormBTN.addEventListener("click",(e)=>{
-    addToStorage()
     e.preventDefault()
+    addToStorage()
+    refresh()
 })
 function addToStorage(){
     const form = document.querySelector("#addForm");
@@ -99,8 +101,15 @@ function addToStorage(){
     if(formInfo[4]==""){
         formInfo[4]="0";
     }
-    console.log(formInfo)
-    /* send to storage */
+    const completeFormInfo={"id":globalToDoCounter(),"date":"0","subject":formInfo[0],"text":formInfo[1],"type":formInfo[3],"group":formInfo[2],"checked":false}
+    let oldWhole=storage()
+    if(oldWhole){
+       oldWhole.push(completeFormInfo) 
+    }
+    else{
+        oldWhole=[completeFormInfo]
+    }
+    storage(oldWhole)
 }
 /* storage */
 
@@ -113,7 +122,15 @@ function storage(wholeToDo=[]) {
         localStorage.setItem("toDos",JSON.stringify(wholeToDo));
     }
 }
-refresh(whole)
-console.log("#")
-storage(whole)
+function globalToDoCounter() {
+    const toDos=storage()
+    if (toDos){
+        return toDos.length+1;
+    }
+    else{
+        return 1;
+    }
+    
+}
+refresh()
 console.log(storage())
