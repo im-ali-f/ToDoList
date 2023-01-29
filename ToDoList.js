@@ -54,7 +54,6 @@ function refresh(day="today") {
         whole.forEach(toDoWholeItem => {
             let delName= `delete_${toDoWholeItem["id"]}`
             eval(`const ${delName} =document.querySelector(\`#delete_${toDoWholeItem["id"]}\`);`)
-            console.log(delName)
             eval(`${delName}`).addEventListener("click",(e)=>{
                 eval(`${delName}`).parentElement.parentElement.remove()
             })
@@ -103,7 +102,18 @@ function addToStorage(){
     console.log(formInfo)
     /* send to storage */
 }
+/* storage */
 
+function storage(wholeToDo=[]) {
+    if (wholeToDo.length == 0){
+        return JSON.parse(localStorage.getItem("toDos"));
+    }
+    else{
+        localStorage.clear()
+        localStorage.setItem("toDos",JSON.stringify(wholeToDo));
+    }
+}
 refresh(whole)
 console.log("#")
-addToStorage()
+storage(whole)
+console.log(storage())
