@@ -101,7 +101,7 @@ function addToStorage(){
     if(formInfo[4]==""){
         formInfo[4]="0";
     }
-    const completeFormInfo={"id":globalToDoCounter(),"date":"0","subject":formInfo[0],"text":formInfo[1],"type":formInfo[3],"group":formInfo[2],"checked":false}
+    const completeFormInfo={"id":globalToDoCounter(),"date":"0","subject":formInfo[0],"text":formInfo[1],"type":formInfo[3],"ifNone":formInfo[4],"group":formInfo[2],"checked":false}
     let oldWhole=storage()
     if(oldWhole){
        oldWhole.push(completeFormInfo) 
@@ -110,6 +110,7 @@ function addToStorage(){
         oldWhole=[completeFormInfo]
     }
     storage(oldWhole)
+    fixDate()
 }
 /* storage */
 
@@ -131,6 +132,30 @@ function globalToDoCounter() {
         return 1;
     }
     
+}
+function fixDate() {
+    var currentDate = new Date()
+    var day = currentDate.getDate()
+    if (day < 10)
+        day=`0${day}`;
+    var month = currentDate.getMonth() + 1
+    if(month <10)
+        month=`0${month}`;
+    var year = currentDate.getFullYear()
+    console.log( day + "/" + month + "/" + year)
+    let whole=storage()
+    whole.forEach(wholeToDo => {
+        if(wholeToDo["date"] == "0"){
+            if(wholeToDo["type"] != "none")
+                wholeToDo["date"] = `${year}-${month}-${day}`
+            else
+                if(wholeToDo["ifNone"] !=0)
+                    wholeToDo["date"] = wholeToDo["ifNone"]
+                else
+                wholeToDo["date"] = `${year}-${month}-${day}`
+        }
+    });
+    storage(whole);
 }
 refresh()
 console.log(storage())
