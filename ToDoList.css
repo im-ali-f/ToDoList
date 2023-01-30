@@ -39,11 +39,12 @@
     --bodyColor : #e4ecf0;
     --golden:#ffd900c7;
     --darkerBody : #99a2a4;
-    --menuTimeSchedule:rgba(33, 70, 235, 0.968);
+    --menuTimeSchedule:rgba(152, 152, 64, 0.904);
     --usualTransition : 0.175s ease-in-out;
     --animationBorder : rgb(192, 41, 238);
     --animationBorder2: rgb(33, 70, 235);
     --dayTxt:rgba(64, 190, 195, 0.362);
+    --menuBTN:rgb(236, 219, 39);
 }
 html { font-size: 62.5%; } 
 body{
@@ -232,12 +233,12 @@ animation: animate 9s linear infinite;
 }
 .menuTimeScheduleBTN:hover{
     transition: all 0.2s ease-in-out;
-    color: var(--obtn);
+    color: var(--menuBTN);
     font-size: 6.5vh;
 }
 
 .menuTimeScheduleBTN_color{
-    color: var(--obtn);
+    color: var(--menuBTN);
     text-shadow: 6px 6px 5px rgba(0,0,0,0.64);
 }
 
@@ -514,4 +515,62 @@ animation: animate 9s linear infinite;
 }
 .checkedBTN_active{
     color: lime;
+}
+.menuClass{
+    background-color:var(--darkerBody) ;
+    color: #926307;
+    font-family: Impact;
+    font-size: 2vh;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    border-radius: 8px;
+}
+.menuClassContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Impact;
+    font-size: 3vh;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+}
+.menuSelect{
+    width: 20vw;
+    height: 9vh;
+    transition: all 0.2s ease-in-out;
+}
+.menuHover:hover{
+    transition: all 0.2s ease-in-out;
+    color: rgb(243, 209, 42);
+    box-shadow: 0 8px 32px 0 rgba(69, 72, 114, 0.37);
+}
+.menuFormBTN{
+    margin-top: 1rem;
+    background-color: rgb(104, 103, 18);
+    width: 8vw;
+    height: 6vh;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    color: rgb(252, 255, 47);
+}
+.menuFormBTN:hover{
+    width: 8.5vw;
+    height: 6.5vh;
+    transition: all 0.2s ease-in-out;
+    color: rgb(104, 103, 18);
+    background-color: rgb(252, 255, 47);
+    box-shadow: 0 8px 32px 0 rgba(16, 119, 63, 0.37);
 }

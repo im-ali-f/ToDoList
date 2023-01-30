@@ -18,11 +18,38 @@ checkNone.addEventListener("click",(e)=>{
     timeIfNone.toggleAttribute("disabled")
 }
 })
-
+/*get day and group we want to see from html*/
+const menuFindBTN=document.querySelector("#menuFormBTN")
+menuFindBTN.addEventListener("click",(e)=>{
+    e.preventDefault();
+    refresh()
+})
+function getMenu() {
+    const form = document.querySelector("#menuForm");
+    const formData = new FormData(form);
+    let formInfo=[];
+    for (const info of formData) {
+        if(info[1]==""){
+            var currentDate = new Date()
+            var day = currentDate.getDate()
+            if (day < 10)
+                day=`0${day}`;
+            var month = currentDate.getMonth() + 1
+            if(month <10)
+                month=`0${month}`;
+            var year = currentDate.getFullYear()
+            formInfo.push(`${year}-${month}-${day}`)
+        }
+        else
+            formInfo.push(info[1])
+     }
+     return formInfo;
+}
 /*refresh todo list and show*/
-
 function refresh(day="today") {
-    whole=storage()
+    const menuInfo=getMenu()
+    day=menuInfo[1]
+    whole=combiner(day)
     const timeTable=document.querySelector(".timeTable");
     timeTable.innerHTML="";
     if (whole){
@@ -149,7 +176,6 @@ function fixDate() {
     if(month <10)
         month=`0${month}`;
     var year = currentDate.getFullYear()
-    console.log( day + "/" + month + "/" + year)
     let whole=storage()
     whole.forEach(wholeToDo => {
         if(wholeToDo["date"] == "0"){

@@ -57,9 +57,21 @@
                                <button id="addFormBTN" class="addFormBTN addClass addHover">Add !</button>
                         </form>
                     </div>
-
                     <div class="menuTimeScheduleBTN"><i class="fa-solid fa-bars"></i></div>
-                    <div class="menuTimeSchedule"></div>
+                    <div class="menuTimeSchedule">
+                        <form method="post" id="menuForm" name="item" class="menuClassContainer">
+                            <div class="marginForm"></div>
+                             Group : <select name="itemGroup" id="menuItemGroup" class="menuClass menuSelect menuHover">
+                                <option value="all">All</option>
+                                 <option value="daily">Daily</option>
+                                 <option value="work">Work</option>
+                                 <option value="personal">Personal</option>
+                                 <option value="study">Study</option>
+                                 <option value="etc">etc</option>
+                               </select>
+                             Date : <input type="date" name="formDate" id="menuFormDate" class="menuClass menuSelect menuHover">
+                                <button id="menuFormBTN" class="menuFormBTN menuClass menuHover">Find !</button>
+                    </div>
                 </div>
 
                 <div class="timeTableContainer">
