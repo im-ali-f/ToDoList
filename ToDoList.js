@@ -9,6 +9,18 @@ const add = document.querySelector(".add")
 addBTN.addEventListener("click",(e)=>{
     addBTN.classList.toggle('addBTN_color');
     add.classList.toggle('add_display');
+    
+    const itemSubject= document.querySelector("#itemSubject")
+    const itemText= document.querySelector("#itemTxt")
+    const itemType= document.querySelector("#itemType")
+    const itemGroup= document.querySelector("#itemGroup")
+    const timeIfNone=document.querySelector("#formDate")
+    timeIfNone.disabled=false;
+
+    itemSubject.value=""
+    itemText.value=""
+    itemType.value="today"
+    itemGroup.value="daily"
 })    
 
 const checkNone=document.querySelector("#itemType");
@@ -51,7 +63,6 @@ function refresh(day="today") {
     day=menuInfo[1]
     wholeFromCombiner=combiner(day)
     whole=[]
-    console.log(menuInfo)
     wholeFromCombiner.forEach(wholeToDo=> {
         if(menuInfo[0]=="all"){
             whole=wholeFromCombiner;
@@ -110,7 +121,7 @@ function refresh(day="today") {
             let editName= `edit_${toDoWholeItem["id"]}`
             eval(`const ${editName} =document.querySelector(\`#edit_${toDoWholeItem["id"]}\`);`)
             eval(`${editName}`).addEventListener("click",(e)=>{
-                /*first create editor ...*/
+                toDoEditor("edit",editName)
             })
         });
         
@@ -227,5 +238,25 @@ function combiner(day) {
     });
     return wholeToReturn;
 }
-
+function toDoEditor(op,name) {
+    const whole=storage()
+    if(op == "edit"){
+        
+        const id=name.split("_")[1]
+        whole.forEach(wholeToDo => {
+            if(wholeToDo["id"]==id){
+                const itemSubject= document.querySelector("#itemSubject")
+                const itemText= document.querySelector("#itemTxt")
+                const itemType= document.querySelector("#itemType")
+                const itemGroup= document.querySelector("#itemGroup")
+                itemSubject.value=wholeToDo["subject"]
+                itemText.value=wholeToDo["text"]
+                itemType.value=wholeToDo["type"]
+                itemGroup.value=wholeToDo["group"]
+                addBTN.classList.toggle('addBTN_color');
+                add.classList.toggle('add_display');
+            }
+        });
+    }
+}
 refresh()
