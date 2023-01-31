@@ -111,8 +111,9 @@ function refresh(day="today") {
             eval(`const ${delName} =document.querySelector(\`#delete_${toDoWholeItem["id"]}\`);`)
             eval(`${delName}`).addEventListener("click",(e)=>{
                 eval(`${delName}`).parentElement.parentElement.remove()
+                toDoEditor("delete",delName)
             })
-            /*call editor there*/
+            
         });
         whole.forEach(toDoWholeItem => {
             let checkName= `check_${toDoWholeItem["id"]}`
@@ -120,8 +121,9 @@ function refresh(day="today") {
             eval(`${checkName}`).addEventListener("click",(e)=>{
                 eval(`${checkName}`).parentElement.parentElement.classList.toggle("checked")
                 e.target.classList.toggle("checkedBTN_active")
+                toDoEditor("check",checkName)
             })
-            /*call editor there*/
+            
         });
         whole.forEach(toDoWholeItem => {
             let editName= `edit_${toDoWholeItem["id"]}`
@@ -180,6 +182,9 @@ function storage(wholeToDo=[]) {
     if (wholeToDo.length == 0){
         return JSON.parse(localStorage.getItem("toDos"));
     }
+    else if(wholeToDo == "clear"){
+        localStorage.clear()
+    }
     else{
         localStorage.clear()
         localStorage.setItem("toDos",JSON.stringify(wholeToDo));
@@ -187,11 +192,20 @@ function storage(wholeToDo=[]) {
 }
 function globalToDoCounter() {
     const toDos=storage()
+    let max=1;
+    if(toDos==null)
+        return max
+    toDos.forEach(wholeToDo => {
+    if(max<wholeToDo["id"])
+        max=wholeToDo["id"]
+    });
+
     if (toDos){
-        return toDos.length+1;
+        
+        return max + 1;
     }
     else{
-        return 1;
+        return max;
     }
     
 }
@@ -225,6 +239,9 @@ function fixDate() {
 function combiner(day) {
     const whole = storage()
     let wholeToReturn=[]
+    if(whole==null)
+        return wholeToReturn
+    
     whole.forEach(toDowhole => {
         if(toDowhole["type"]=="everyDay"){
             wholeToReturn.push(toDowhole)
@@ -248,7 +265,7 @@ function combiner(day) {
     return wholeToReturn;
 }
 function toDoEditor(op,name) {
-    const whole=storage()
+    let whole=storage()
     if(op == "edit"){
         const id=name.split("_")[1]
         whole.forEach(wholeToDo => {
@@ -277,6 +294,22 @@ function toDoEditor(op,name) {
         addFormBTN.value=`${id}`
         addFormBTN.classList.add("editBTN")
         
+    }
+    else if(op == "delete"){
+        const id=name.split("_")[1]
+        whole.forEach(wholeToDo => {
+            if(wholeToDo["id"]==id){
+                whole = whole.filter(function(item) {
+                    return item !== wholeToDo
+                })
+                
+            }
+        });
+        console.log(whole)
+        if(whole.length != 0)
+            storage(whole)
+        else
+            storage("clear")  
     }
 }
 function editStorage(id) {
