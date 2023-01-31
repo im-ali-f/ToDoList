@@ -574,3 +574,11 @@ animation: animate 9s linear infinite;
     background-color: rgb(252, 255, 47);
     box-shadow: 0 8px 32px 0 rgba(16, 119, 63, 0.37);
 }
+.editBTN{
+    background-color: rgb(104, 103, 18);
+    color: rgb(252, 255, 47);
+}
+.editBTN:hover{
+    color: rgb(104, 103, 18);
+    background-color: rgb(252, 255, 47);
+}

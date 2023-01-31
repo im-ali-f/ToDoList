@@ -9,14 +9,20 @@ const add = document.querySelector(".add")
 addBTN.addEventListener("click",(e)=>{
     addBTN.classList.toggle('addBTN_color');
     add.classList.toggle('add_display');
+
+    const addFormBTN=document.querySelector("#addFormBTN")
+        addFormBTN.innerHTML=`Add !`
+        addFormBTN.value=`add`
+        addFormBTN.classList.add("addFormBTN")
+        addFormBTN.classList.remove("editBTN")
     
     const itemSubject= document.querySelector("#itemSubject")
     const itemText= document.querySelector("#itemTxt")
     const itemType= document.querySelector("#itemType")
     const itemGroup= document.querySelector("#itemGroup")
     const timeIfNone=document.querySelector("#formDate")
-    timeIfNone.disabled=false;
-
+    timeIfNone.disabled=true;
+    timeIfNone.value=""
     itemSubject.value=""
     itemText.value=""
     itemType.value="today"
@@ -137,7 +143,10 @@ function refresh(day="today") {
 const addFormBTN = document.querySelector("#addFormBTN")
 addFormBTN.addEventListener("click",(e)=>{
     e.preventDefault()
-    addToStorage()
+    if(e.target.value=="add")
+        addToStorage()
+    else
+        editStorage(e.target.value)
     refresh()
 })
 function addToStorage(){
@@ -241,7 +250,6 @@ function combiner(day) {
 function toDoEditor(op,name) {
     const whole=storage()
     if(op == "edit"){
-        
         const id=name.split("_")[1]
         whole.forEach(wholeToDo => {
             if(wholeToDo["id"]==id){
@@ -249,14 +257,52 @@ function toDoEditor(op,name) {
                 const itemText= document.querySelector("#itemTxt")
                 const itemType= document.querySelector("#itemType")
                 const itemGroup= document.querySelector("#itemGroup")
+                const timeIfNone=document.querySelector("#formDate")
+                timeIfNone.disabled=true;
+                if(wholeToDo["type"] =="none"){
+                    timeIfNone.disabled=false;
+                    timeIfNone.value=wholeToDo["ifNone"]
+                }
+
                 itemSubject.value=wholeToDo["subject"]
                 itemText.value=wholeToDo["text"]
                 itemType.value=wholeToDo["type"]
                 itemGroup.value=wholeToDo["group"]
-                addBTN.classList.toggle('addBTN_color');
-                add.classList.toggle('add_display');
+                addBTN.classList.add('addBTN_color');
+                add.classList.add('add_display');
             }
         });
+        const addFormBTN=document.querySelector("#addFormBTN")
+        addFormBTN.innerHTML=`Edit id : ${id} !`
+        addFormBTN.value=`${id}`
+        addFormBTN.classList.add("editBTN")
+        
     }
+}
+function editStorage(id) {
+    const itemSubject= document.querySelector("#itemSubject")
+    const itemText= document.querySelector("#itemTxt")
+    const itemType= document.querySelector("#itemType")
+    const itemGroup= document.querySelector("#itemGroup")
+    const timeIfNone=document.querySelector("#formDate")
+
+    const whole=storage()    
+    whole.forEach(wholeToDo => {
+        if(wholeToDo["id"]==id){
+            wholeToDo["subject"]=itemSubject.value;
+            wholeToDo["text"]=itemText.value;
+            wholeToDo["type"]=itemType.value;
+            wholeToDo["group"]=itemGroup.value;
+            wholeToDo["subject"]=itemSubject.value;
+            if(itemType.value=="none"){
+                if(timeIfNone.value != ""){
+                    wholeToDo["date"]=timeIfNone.value  
+                    wholeToDo["ifNone"]=timeIfNone.value  
+                }
+            }
+        }
+    });
+    storage(whole)
+    fixDate()
 }
 refresh()
