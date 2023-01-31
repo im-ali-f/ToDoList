@@ -49,7 +49,18 @@ function getMenu() {
 function refresh(day="today") {
     const menuInfo=getMenu()
     day=menuInfo[1]
-    whole=combiner(day)
+    wholeFromCombiner=combiner(day)
+    whole=[]
+    console.log(menuInfo)
+    wholeFromCombiner.forEach(wholeToDo=> {
+        if(menuInfo[0]=="all"){
+            whole=wholeFromCombiner;
+        }
+        else{
+            if(wholeToDo["group"]==menuInfo[0])
+                whole.push(wholeToDo)
+        }
+    });
     const timeTable=document.querySelector(".timeTable");
     timeTable.innerHTML="";
     if (whole){
@@ -218,5 +229,3 @@ function combiner(day) {
 }
 
 refresh()
-console.log(storage())
-console.log(combiner())
